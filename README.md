@@ -6,7 +6,7 @@
 ![ZIP signatures](/images/1.jpg)
 
 ```hex
-50 4B 01 02 or 50 4B 07 08 - ZIP format signature
+50 4B 01 02 or 50 4B 07 08 (source: wikipedia)- ZIP format signature
 ```
 
 ### Analyze Signatures of RAR Format
@@ -25,7 +25,7 @@ FF D8 FF - JPEG Signature
 ![MP3 signatures](/images/4.jpg)
 ```hex
 49 44 33 - MP3 Signature or
-FF F2 or FF F3
+FF F2 or FF F3 (source: wikipedia)
 ```
 
 ## Make YARA Rule
