@@ -53,7 +53,7 @@ rule FileExtensionDetector {
 		$rar or $zip or $jpeg or $mp3  
 }
 ```
-![YARA rule](FileExtensionDetector.yar)
+Файл .yar: [FileExtensionDetector.yar](FileExtensionDetector.yar)
 
 ## Тестирование и валидация
 
