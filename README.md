@@ -1,34 +1,41 @@
-# File format detection using YARA
+# Обнаружение форматов файлов с помощью YARA
 
-## Analyze File Formats
+Проект демонстрирует использование YARA для обнаружения файлов различных форматов (ZIP, RAR, JPEG, MP3) на основе их сигнатур.
 
-### Analyze Signatures of ZIP Format
-![ZIP signatures](/images/1.jpg)
+## Технические детали
+
+- **Используемая версия YARA**: 4.5.4
+- **ОС**: Windows 11 Pro
+
+## Анализ форматов файлов
+
+### Анализ сигнатур ZIP формата
+![ZIP сигнатуры](/images/1.jpg)
 
 ```hex
-50 4B 01 02 or 50 4B 07 08 (source: wikipedia)- ZIP format signature
+50 4B 01 02 или 50 4B 07 08 (источник: wikipedia) - сигнатура ZIP формата
 ```
 
-### Analyze Signatures of RAR Format
-![RAR signatures](/images/2.jpg)
+### Анализ сигнатур RAR формата
+![RAR сигнатуры](/images/2.jpg)
 ```hex
-52 61 72 21 1A 07 01 00 - RAR Signature
+52 61 72 21 1A 07 01 00 - сигнатура RAR
 ```
 
-### Analyze Signatures of JPEG Format
-![JPEG signatures](/images/3.jpg)
+### Анализ сигнатур JPEG формата
+![JPEG сигнатуры](/images/3.jpg)
 ```hex
-FF D8 FF - JPEG Signature
+FF D8 FF - сигнатура JPEG
 ```
 
-### Analyze Signatures of MP3 Format
-![MP3 signatures](/images/4.jpg)
+### Анализ сигнатур MP3 формата
+![MP3 сигнатуры](/images/4.jpg)
 ```hex
-49 44 33 - MP3 Signature or
-FF F2 or FF F3 (source: wikipedia)
+49 44 33 - сигнатура MP3 или
+FF F2 или FF F3 (источник: wikipedia)
 ```
 
-## Make YARA Rule
+## Создание YARA правила
 
 ```yara
 rule FileExtensionDetector {
@@ -47,9 +54,9 @@ rule FileExtensionDetector {
 }
 ```
 
-## Testing and Validation
+## Тестирование и валидация
 
-### Create test directory structure and make up fake files:
+### Создание тестовой структуры директорий и fake-файлов:
 ```powershell
 mkdir test-files
 call > test.zip.fake
@@ -64,13 +71,14 @@ mv *mp3 ./test-files
 mv *.fake ./test-files
 ```
 
-### Run YARA scan:
+### Запуск YARA сканирования:
 ```powershell
 & "C:\Program Files\YARA\yara64.exe" -r .\FileFormatDetector.yar .\test_files\
 ```
 
-![run YARA](/images/5.jpg)
+![Запуск YARA](/images/5.jpg)
 
-## Takeaway
+## Выводы
 
-File signatures provide reliable identification regardless of file extensions. All files considered to be detected were successfully detected through signature analysis.
+Сигнатуры файлов обеспечивают надежную идентификацию независимо от расширений файлов. Все файлы, которые предполагалось обнаружить, были успешно выявлены с помощью анализа сигнатур.
+Подход применим для широкого спектра файловых форматов.
