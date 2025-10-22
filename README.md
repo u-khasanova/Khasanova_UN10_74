@@ -46,13 +46,19 @@ rule FileExtensionDetector {
 
 ## Testing and Validation
 
-### Create test directory structure:
+### Create test directory structure and make up fake files:
 ```powershell
+mkdir test-files
 call > test.zip.fake
 call > test.rar.fake
 call > test.mp3.fake
 call > test.jpg.fake
 call > test.jpeg.fake
+mv *zip ./test-files
+mv *rar ./test-files
+mv *jpg ./test-files
+mv *mp3 ./test-files
+mv *.fake ./test-files
 ```
 
 ### Run YARA scan:
@@ -62,4 +68,4 @@ call > test.jpeg.fake
 
 ## Takeaway
 
-Ключевые команды для работы: `yara -r правила.яр директория` и `fhx файл` для анализа hex-дампов.
+File signatures provide reliable identification regardless of file extensions. All files considered to be detected were successfully detected through signature analysis.
